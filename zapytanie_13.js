@@ -1,5 +1,9 @@
-//aggregation
 db.people.distinct("job");
+
+//aggregation
+db.people.aggregate(
+    { $group: { _id: 0, jobs: {$addToSet:"$job"} }}
+)
 
 //map-reduce
 var mapFunction = function() {
