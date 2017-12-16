@@ -1,0 +1,19 @@
+MongoDB shell version v3.6.0
+connecting to: mongodb://127.0.0.1:27017/nbd
+MongoDB server version: 3.6.0
+[
+	{
+		"_id" : "Female",
+		"value" : {
+			"height" : 166.81260913705597,
+			"weight" : 70.1133157360407
+		}
+	},
+	{
+		"_id" : "Male",
+		"value" : {
+			"height" : 166.73469507269812,
+			"weight" : 70.00976575121167
+		}
+	}
+]

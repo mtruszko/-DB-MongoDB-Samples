@@ -20,9 +20,11 @@ var finalizeFunction = function(key, reducedValue) {
              weight: reducedValue.weight/reducedValue.count }
 }
         
-db.people.mapReduce(
+var results = db.people.mapReduce(
         mapFunction,
         reduceFunction,
         { out: "11.map_reduce_output",
           finalize: finalizeFunction }
-).find();
+).find()
+.toArray();
+printjson(results)

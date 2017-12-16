@@ -1,2 +1,2 @@
-use nbd;
-db.people.findOne({});
+var result = db.people.findOne({});
+printjson(result)

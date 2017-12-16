@@ -1,5 +1,4 @@
-use nbd;
-db
+var results = db
 .people
 .insertOne(
 {
@@ -30,3 +29,4 @@ db
     ]
 }
 )
+printjson(results)

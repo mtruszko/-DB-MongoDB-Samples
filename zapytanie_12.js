@@ -10,8 +10,10 @@ var reduceFunction = function(key, value) {
     return Array.sum(value);
 };
    
-db.people.mapReduce(
+var results = db.people.mapReduce(
         mapFunction,
         reduceFunction,
         { out: "12.map_reduce_output" }
-).find();
+).find()
+.toArray();
+printjson(results)

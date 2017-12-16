@@ -1,10 +1,11 @@
-db.people.distinct("job");
-
+var results = db.people.distinct("job");
+printjson(results)
 //aggregation
-db.people.aggregate(
+var results = db.people.aggregate(
     { $group: { _id: 0, jobs: {$addToSet:"$job"} }}
 )
-
+.toArray()
+printjson(results)
 //map-reduce
 var mapFunction = function() {
     emit(0, { jobs: [this.job]})
@@ -23,10 +24,12 @@ var finalizeFunction = function(key, value) {
     return { jobs: unique}
 }
         
-db.people.mapReduce(
+var results = db.people.mapReduce(
         mapFunction,
         reduceFunction,
         { out: "13.map_reduce_output",
           finalize: finalizeFunction 
          }
-).find();
+).find()
+.toArray();
+printjson(results)

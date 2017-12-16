@@ -20,11 +20,13 @@ var finalizeFunction = function(key, value) {
              sumBalances: sum}
 }
         
-db.people.mapReduce(
+var results = db.people.mapReduce(
         mapFunction,
         reduceFunction,
         { out: "15.map_reduce_output",
            query: { nationality: "Poland",
                     sex: "Female" },
            finalize: finalizeFunction }
-).find();
+).find()
+.toArray();
+printjson(results)

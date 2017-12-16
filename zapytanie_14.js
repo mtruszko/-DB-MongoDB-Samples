@@ -25,9 +25,11 @@ var finalizeFunction = function(key, value) {
              mavBMI: Math.max.apply(Math, value.bmiValues)}
 }
         
-db.people.mapReduce(
+var results = db.people.mapReduce(
         mapFunction,
         reduceFunction,
         { out: "14.map_reduce_output",
            finalize: finalizeFunction }
-).find();
+).find()
+.toArray();
+printjson(results)
