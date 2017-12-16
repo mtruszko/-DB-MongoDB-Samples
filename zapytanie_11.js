@@ -1,11 +1,3 @@
-use nbd
-//aggregate
-db.people.aggregate([
-    { $group: { _id: "$sex", 
-        weight: { $sum: "$weight" }, 
-        height: { $sum: "$height" }}}
-]);
-        
 //map-reduce
 var mapFunction = function() {
     emit(this.sex, { weight: parseFloat(this.weight),
